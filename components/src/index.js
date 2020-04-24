@@ -4,6 +4,7 @@ import faker from "faker";
 import CommentDetail from "./CommentDetail";
 import ApprovalCard from "./ApprovalCard";
 
+// parent component
 const App = () => {
 	return (
 		<div className="ui container comments">
