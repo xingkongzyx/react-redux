@@ -1,17 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from "react";
+import ReactDOM from "react-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = { lat: null, errorMes: "" };
+		window.navigator.geolocation.getCurrentPosition(
+			(position) => {
+				this.setState({ lat: position.coords.latitude });
+			},
+			(error) => {
+				// 当我们update state时,我们不需要升级其中的每个property
+				// 例如在这里我们只更新 errorMes; 它并不会删除lat 属性
+				this.setState({ errorMes: error.message });
+			}
+		);
+	}
+	render() {
+        // Conditional rendering
+		if (this.state.lat && !this.state.errorMes) {
+			return <div>latitude: {this.state.lat}</div>;
+		}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+		if (!this.state.lat && this.state.errorMes) {
+			return <div>Error: {this.state.errorMes}</div>;
+		}
+
+		return <div>Loading</div>;
+	}
+}
+
+ReactDOM.render(<App />, document.querySelector("#root"));
