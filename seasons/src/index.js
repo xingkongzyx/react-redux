@@ -2,9 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 class App extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = { lat: null, errorMes: "" };
+	state = { lat: null, errorMes: "" };
+
+	render() {
+		// Conditional rendering
+		if (this.state.lat && !this.state.errorMes) {
+			return <div>latitude: {this.state.lat}</div>;
+		}
+
+		if (!this.state.lat && this.state.errorMes) {
+			return <div>Error: {this.state.errorMes}</div>;
+		}
+
+		return <div>Loading</div>;
+	}
+
+	componentDidMount() {
 		window.navigator.geolocation.getCurrentPosition(
 			(position) => {
 				this.setState({ lat: position.coords.latitude });
@@ -15,18 +28,6 @@ class App extends React.Component {
 				this.setState({ errorMes: error.message });
 			}
 		);
-	}
-	render() {
-        // Conditional rendering
-		if (this.state.lat && !this.state.errorMes) {
-			return <div>latitude: {this.state.lat}</div>;
-		}
-
-		if (!this.state.lat && this.state.errorMes) {
-			return <div>Error: {this.state.errorMes}</div>;
-		}
-
-		return <div>Loading</div>;
 	}
 }
 
