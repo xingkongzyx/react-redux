@@ -6,17 +6,21 @@ import Spinner from "./Spinner";
 class App extends React.Component {
 	state = { lat: null, errorMes: "" };
 
-	render() {
+	renderContent() {
 		// Conditional rendering
 		if (this.state.lat && !this.state.errorMes) {
+			// 这里使用了props system
 			return <SeasonDisplay lat={this.state.lat} />;
 		}
 
 		if (!this.state.lat && this.state.errorMes) {
-			return <div>Error: {this.state.errorMes}</div>;
+			return <h1 className="error-page">Error: {this.state.errorMes}</h1>;
 		}
-
-		return <Spinner />;
+            
+		return <Spinner message="please accept location request!" />;
+	}
+	render() {
+		return this.renderContent();
 	}
 
 	componentDidMount() {
