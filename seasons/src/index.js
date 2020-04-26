@@ -5,24 +5,6 @@ import Spinner from "./Spinner";
 
 class App extends React.Component {
 	state = { lat: null, errorMes: "" };
-
-	renderContent() {
-		// Conditional rendering
-		if (this.state.lat && !this.state.errorMes) {
-			// 这里使用了props system
-			return <SeasonDisplay lat={this.state.lat} />;
-		}
-
-		if (!this.state.lat && this.state.errorMes) {
-			return <h1 className="error-page">Error: {this.state.errorMes}</h1>;
-		}
-            
-		return <Spinner message="please accept location request!" />;
-	}
-	render() {
-		return this.renderContent();
-	}
-
 	componentDidMount() {
 		window.navigator.geolocation.getCurrentPosition(
 			(position) => {
@@ -34,6 +16,23 @@ class App extends React.Component {
 				this.setState({ errorMes: error.message });
 			}
 		);
+	}
+
+	renderContent() {
+		// Conditional rendering
+		if (this.state.lat && !this.state.errorMes) {
+			// 这里使用了props system
+			return <SeasonDisplay lat={this.state.lat} />;
+		}
+
+		if (!this.state.lat && this.state.errorMes) {
+			return <h1 className="error-page">Error: {this.state.errorMes}</h1>;
+		}
+
+		return <Spinner message="please accept location request!" />;
+	}
+	render() {
+		return this.renderContent();
 	}
 }
 
