@@ -11,7 +11,6 @@ class App extends React.Component {
 
 	onVideoSelect = (video) => {
 		this.setState({ selectedVideo: video });
-		console.log("From the app", video);
 	};
 
 	onTermSubmit = async (term) => {
@@ -28,18 +27,10 @@ class App extends React.Component {
 		this.setState({ videos: items });
 	};
 	render() {
-		if (this.state.selectedVideo) {
-			console.log(this.state.selectedVideo);
-			return (
-				<div className="ui container">
-					<SearchBar onFormSubmit={this.onTermSubmit} />
-					<VideoDetail />
-				</div>
-			);
-		}
 		return (
 			<div className="ui container">
 				<SearchBar onFormSubmit={this.onTermSubmit} />
+				<VideoDetail video={this.state.selectedVideo} />
 				<VideoList
 					onVideoSelect={this.onVideoSelect}
 					videos={this.state.videos}
