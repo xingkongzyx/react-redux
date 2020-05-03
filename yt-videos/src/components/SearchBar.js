@@ -1,7 +1,7 @@
 import React from "react";
 
 class SearchBar extends React.Component {
-	state = { term: "cars" };
+	state = { term: "" };
 	// 当用户更改input中信息时调用
 	onInputChange = (e) => {
 		this.setState({ term: e.target.value });
@@ -21,7 +21,7 @@ class SearchBar extends React.Component {
 						<input
 							type="text"
 							value={this.state.term}
-							placeholder="Please enter video name"
+							placeholder="Please enter the keyword you want to search!"
 							// "onChange" is a special name for event handler
 							onChange={this.onInputChange}
 						/>
