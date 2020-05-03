@@ -10,7 +10,7 @@ class SearchBar extends React.Component {
 	onFormSubmit = (e) => {
 		e.preventDefault();
 		// 使用从App component中传入的callback
-		// this.props.swarch(this.state.term);
+		this.props.onFormSubmit(this.state.term);
 	};
 	render() {
 		return (
