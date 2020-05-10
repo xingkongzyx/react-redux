@@ -1,4 +1,14 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400);
+
+body {
+	margin: 0;
+	font-family: "Montserrat";
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: #80deea;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
 }
