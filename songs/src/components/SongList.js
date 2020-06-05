@@ -36,11 +36,8 @@ class SongList extends React.Component {
 /* 将store中的state(all data)传入function并进行一些计算, 
 最后使数据以props的形式显示于component中 */
 const mapStatetToProps = (state) => {
-	console.log(state);
 	return { songs: state.songs };
 };
 
 // connect func会将selectSong action creator 作为props传入component
 export default connect(mapStatetToProps, { selectSong })(SongList);
-
-
