@@ -23,3 +23,4 @@ const mapStateToProp = (state) => {
 };
 
 export default connect(mapStateToProp)(SongDetail);
+

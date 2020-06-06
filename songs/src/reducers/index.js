@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 
 // reducer for returning a static list of songs, no need for action
+// 只返回一个静止的list
 const songsReducer = () => {
 	return [
 		{
@@ -32,3 +33,5 @@ export default combineReducers({
 	songs: songsReducer,
 	selectedSong: selectedSongReducer,
 });
+
+

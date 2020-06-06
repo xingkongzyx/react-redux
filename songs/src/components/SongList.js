@@ -25,6 +25,7 @@ class SongList extends React.Component {
 	}
 
 	render() {
+		console.log(this.renderList());
 		return (
 			<div className="ui divided list">
 				{this.renderList()}{" "}
@@ -41,3 +42,5 @@ const mapStatetToProps = (state) => {
 
 // connect func会将selectSong action creator 作为props传入component
 export default connect(mapStatetToProps, { selectSong })(SongList);
+
+
