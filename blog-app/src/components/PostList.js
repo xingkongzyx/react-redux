@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchPost } from "../actions";
+import { fetchPosts } from "../actions";
 class PostList extends React.Component {
 	componentDidMount() {
-		console.log(this.props);
-		this.props.fetchPost();
+		// console.log(this.props);
+		this.props.fetchPosts();
 	}
 	render() {
 		return <div>Songs</div>;
@@ -13,4 +13,4 @@ class PostList extends React.Component {
 
 // const mapStateToProps = (state) => {};
 
-export default connect(null, { fetchPost })(PostList);
+export default connect(null, { fetchPosts })(PostList);
