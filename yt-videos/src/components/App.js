@@ -4,7 +4,7 @@ import VideoList from "./VideoList";
 import VideoDetail from "./VideoDetail";
 import youtube from "../apis/youtube";
 
-const KEY = "AIzaSyA783jNuFUDVyKUBUqpnoHRBXUuxwec6E0";
+const KEY = "AIzaSyBf-mBYkmKoyfGEBInvrtMxeZuMQBQGiho";
 class App extends React.Component {
 	// 用于将搜到的videos储存于state中
 	state = { videos: [], selectedVideo: null };
@@ -40,7 +40,9 @@ class App extends React.Component {
 				<div className="ui grid">
 					<div className="ui row">
 						<div className="eleven wide column">
-							<VideoDetail video={this.state.selectedVideo} />
+							<VideoDetail
+								video={this.state.selectedVideo}
+							/>
 						</div>
 						<div className="five wide column">
 							<VideoList
