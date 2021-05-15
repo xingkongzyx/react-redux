@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import youtube from "../apis/youtube";
+
 const KEY = "AIzaSyBf-mBYkmKoyfGEBInvrtMxeZuMQBQGiho";
 
 const useVideos = (defaultSearchTerm) => {
@@ -7,8 +9,8 @@ const useVideos = (defaultSearchTerm) => {
 
 	// 用于设置页面第一次启动时的默认视频搜索关键词(设置为React)
 	useEffect(() => {
-		onTermSubmit(defaultSearchTerm);
-	}, []);
+		search(defaultSearchTerm);
+	}, [defaultSearchTerm]);
 
 	const search = async (term) => {
 		const response = await youtube.get("/search", {
